@@ -1,0 +1,89 @@
+{
+  "common": {
+    "labels": {
+      "404": "404",
+      "page_not_found": "Page not found!"
+    },
+    "buttons": {
+      "add_another": "Save & Add Another",
+      "add_image": "Add Image",
+      "add": "Add",
+      "apply": "Apply",
+      "approve": "approve",
+      "back": "Back",
+      "cancel": "Cancel",
+      "choose_file": "Choose File",
+      "clear": "Clear",
+      "close": "Close",
+      "confirm": "Confirm",
+      "create": "Create",
+      "complete": "Complete",
+      "delete": "Delete",
+      "done": "Done",
+      "edit": "Edit",
+      "next": "Next",
+      "no": "No",
+      "ok": "Ok",
+      "reject": "reject",
+      "reset": "Reset",
+      "save_as_draft": "Save as Draft",
+      "save": "Save",
+      "skip": "Skip",
+      "submit": "Submit",
+      "update": "Update",
+      "upload": "Upload",
+      "yes": "Yes",
+      "login": "Login",
+      "refresh": "Refresh"
+    },
+    "drawer": {
+      "labels": {}
+    },
+    "alerts": {
+      "s3_delete_error": "Error in deleting image from s3.",
+      "s3_upload_error": "Error in uploading image to s3.",
+      "azure_search_error": "Error in search users from azure.",
+      "check_internet": "Please check your network connection to proceed with this operation.",
+      "session_expired": "Your session has expired. Please login again.",
+      "new_version": "New Update available!"
+    }
+  },
+  "pages": {
+    "login": {
+      "title": "Member Login",
+      "slogan": "Health, Safety, Security and the Environment",
+      "labels": {
+        "login_invalid": "Invalid Username or Password.",
+        "not_authorized": "You are not authorized to access this Application. Please refer to your system administrator.",
+        "password_error": "Password should not be blank.",
+        "password": "Password",
+        "username_error": "Username should not be blank.",
+        "username": "Username",
+        "version": "Version"
+      },
+      "login_txt": "Please enter your phone number and password to log in",
+      "login_title": "To log in",
+      "phone_number": "Phone number",
+      "my_login_details": "Remember my login details",
+      "forgot_password": "Forgot your password?",
+      "or": "or",
+      "create_an_account": "Create an account",
+      "buttons": {
+        "login": "Login"
+      },
+      "alerts": {
+        "auth_user_error": "Error in authenticating user.",
+        "clear_local_data_error": "Error in clearing local data.",
+        "get_user_error": "Error in getting logged user details."
+      }
+    },
+    "dashboard": {
+      "title": "Dashboard",
+      "labels": {},
+      "welcome": "WELCOME",
+      "navigate": "NAVIGATE",
+      "account": "ACCOUNT",
+      "alerts": {}
+    }
+  }
+}
