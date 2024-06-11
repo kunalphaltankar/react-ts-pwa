@@ -2,7 +2,6 @@ import {
   Alert,
   AlertTitle,
   Backdrop,
-  Box,
   CircularProgress,
   Container,
   Grid,
@@ -10,6 +9,7 @@ import {
 } from "@mui/material";
 import { ReactElement, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { updateNetworkStatus } from "../../../redux/reducers/global.reducer";
 import { resetNotification } from "../../../redux/reducers/notification.reducer";
 import { RootState } from "../../../redux/store";
@@ -19,8 +19,9 @@ type LayoutProps = {
   children: ReactElement;
 };
 
-function Layout({ children }: LayoutProps) {
+function Layout({ children }: Readonly<LayoutProps>) {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const globalState = useSelector((state: RootState) => state.globalState);
 
@@ -44,24 +45,30 @@ function Layout({ children }: LayoutProps) {
     };
   }, []);
 
+  useEffect(() => {
+    if (!isLoggedIn) {
+      navigate("/login");
+    }
+  }, [isLoggedIn]);
+
   const onNotificationClose = () => {
     dispatch(resetNotification());
   };
 
   return (
     <>
-      <Box>
-        <Grid container flexDirection="column">
-          {isLoggedIn && (
-            <Grid item>
-              <AppHeader />
-            </Grid>
-          )}
+      <Grid container flexDirection="column" spacing={2}>
+        {isLoggedIn && (
           <Grid item>
-            <Container maxWidth="lg">{children}</Container>
+            <AppHeader />
           </Grid>
+        )}
+
+        <Grid item>
+          <Container maxWidth="lg">{children}</Container>
         </Grid>
-      </Box>
+      </Grid>
+
       {notificationState.show && (
         <Snackbar
           open={notificationState.show}
@@ -81,6 +88,7 @@ function Layout({ children }: LayoutProps) {
           </Alert>
         </Snackbar>
       )}
+
       {showLoader && (
         <Backdrop
           sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
