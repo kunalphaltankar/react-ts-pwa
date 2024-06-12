@@ -35,7 +35,7 @@ function a11yProps(index: number) {
 }
 
 function InformationTabs() {
-  const [value, setValue] = useState(0);
+  const [value, setValue] = useState(1);
 
   const handleChange = (_: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);

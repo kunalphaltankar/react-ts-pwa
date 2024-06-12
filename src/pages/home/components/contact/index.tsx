@@ -2,22 +2,27 @@ import { Mail, Phone } from "@mui/icons-material";
 import { Link, Stack } from "@mui/material";
 import { ReactElement } from "react";
 
-function Contact(): ReactElement {
+interface Props {
+  email: string;
+  phone: string;
+}
+
+function Contact({ email, phone }: Readonly<Props>): ReactElement {
   return (
     <Stack direction="row" gap={2}>
       <Stack direction="row" gap={1}>
         <Mail />
 
-        <Link href="mailto:williamsample@gmail.com" underline="none">
-          williamsample@gmail.com
+        <Link href={`mailto:${email}`} underline="none">
+          {email}
         </Link>
       </Stack>
 
       <Stack direction="row" gap={1}>
         <Phone />
 
-        <Link href="tel:+91 9021232326" underline="none">
-          +91 9021232326
+        <Link href={`tel:${phone}`} underline="none">
+          {phone}
         </Link>
       </Stack>
     </Stack>

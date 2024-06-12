@@ -2,19 +2,28 @@ import { AccountBox, Restore } from "@mui/icons-material";
 import { Stack, Typography } from "@mui/material";
 import { ReactElement } from "react";
 
-function UpdatedBy(): ReactElement {
+interface Props {
+  updatedBy: {
+    name: string;
+    timestamp: string;
+  };
+}
+
+function UpdatedBy({
+  updatedBy: { name, timestamp },
+}: Readonly<Props>): ReactElement {
   return (
     <Stack direction="row" gap={2} sx={{ justifyContent: { md: "end" } }}>
       <Stack direction="row" gap={1}>
         <AccountBox />
 
-        <Typography>Phyllis Yang</Typography>
+        <Typography>{name}</Typography>
       </Stack>
 
       <Stack direction="row" gap={1}>
         <Restore />
 
-        <Typography>Jul 14, 2023, 4:04 pm</Typography>
+        <Typography>{timestamp}</Typography>
       </Stack>
     </Stack>
   );
