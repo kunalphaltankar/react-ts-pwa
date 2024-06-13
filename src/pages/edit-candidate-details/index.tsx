@@ -3,6 +3,7 @@ import {
   HTMLInputTypeAttribute,
   ReactElement,
   useEffect,
+  useRef,
   useState,
 } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -32,12 +33,24 @@ function EditCandidateDetails(): ReactElement {
 
   // local state
   const [candidate, setCandidate] = useState(candidateDetails);
+  const errorKeysRef = useRef<string[]>([]);
 
   useEffect(() => {
     dispatch(updateHeaderTitle({ title: "Edit Candidate Details" }));
   }, []);
 
   const handleSubmit = () => {
+    if (errorKeysRef.current.length > 0) {
+      dispatch(
+        setNotification({
+          message: "Form is invalid!",
+          show: true,
+          type: "error",
+        })
+      );
+      return;
+    }
+
     dispatch(setCandidateDetails(candidate));
     dispatch(
       setNotification({
@@ -66,21 +79,39 @@ function EditCandidateDetails(): ReactElement {
     return "text";
   };
 
+  const validateField = (key: keyof CandidateDetailsType, value: string) => {
+    if (key === "email" && !value.includes("@")) {
+      errorKeysRef.current.push("email");
+      return { error: true, message: "Invalid email" };
+    }
+
+    errorKeysRef.current = errorKeysRef.current.filter(
+      (errorKey) => errorKey !== key
+    );
+
+    return { error: false, message: "" };
+  };
+
   return (
     <Grid container spacing={2}>
-      {BASIC_KEYS.map((key) => (
-        <Grid item xs={12} md={6} key={key}>
-          <TextField
-            fullWidth
-            id={key}
-            label={key}
-            variant="outlined"
-            type={getInputType(key)}
-            value={candidate[key]}
-            onChange={(e) => handleTextInput(e.target.value, key)}
-          />
-        </Grid>
-      ))}
+      {BASIC_KEYS.map((key) => {
+        const { error, message } = validateField(key, candidate[key]);
+        return (
+          <Grid item xs={12} md={6} key={key}>
+            <TextField
+              fullWidth
+              id={key}
+              label={key}
+              variant="outlined"
+              type={getInputType(key)}
+              value={candidate[key]}
+              onChange={(e) => handleTextInput(e.target.value, key)}
+              error={error}
+              helperText={message}
+            />
+          </Grid>
+        );
+      })}
 
       {INFORMATION_KEYS.map((key) => (
         <Grid item xs={12} md={6} key={key}>
