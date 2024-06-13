@@ -1,7 +1,7 @@
 import { Grid, Stack, Typography } from "@mui/material";
 import { ReactElement } from "react";
 
-const keys = [
+export const INFORMATION_KEYS = [
   "currentOrganization",
   "summary",
   "skills",
@@ -27,7 +27,7 @@ interface Props {
 function Information({ candidateDetails }: Readonly<Props>): ReactElement {
   return (
     <Grid container spacing={2}>
-      {keys.map((key) => (
+      {INFORMATION_KEYS.map((key) => (
         <Grid
           item
           key={candidateDetails[key].title ? candidateDetails[key].title : ""}
