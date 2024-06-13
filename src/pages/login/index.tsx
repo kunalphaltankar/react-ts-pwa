@@ -44,54 +44,57 @@ function Login() {
   };
 
   return (
-    <>
-      <Container
-        maxWidth="lg"
-        sx={{ display: "flex", justifyContent: "center" }}
+    <Container
+      maxWidth="lg"
+      sx={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        height: "100dvh",
+      }}
+    >
+      <Card
+        sx={{
+          maxWidth: "25rem",
+        }}
       >
-        <Card
-          sx={{
-            maxWidth: "25rem",
-          }}
-        >
-          <CardContent>
-            <Grid container spacing={2}>
-              <Grid item xs={12}>
-                <Typography variant="h4" align="center">
-                  {t("pages.login.title")}
-                </Typography>
-              </Grid>
-              <Grid item xs={12}>
-                <TextField
-                  fullWidth
-                  id="tf-username"
-                  label="Username"
-                  variant="outlined"
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <TextField
-                  fullWidth
-                  id="tf-password"
-                  label="Password"
-                  variant="outlined"
-                />
-              </Grid>
+        <CardContent>
+          <Grid container spacing={2}>
+            <Grid item xs={12}>
+              <Typography variant="h4" align="center">
+                {t("pages.login.title")}
+              </Typography>
             </Grid>
-          </CardContent>
-          <CardActions sx={{ display: "flex", justifyContent: "flex-end" }}>
-            <Stack direction="row" justifyContent="space-between" width="100%">
-              <Button variant="text" onClick={onNewUserClick}>
-                New user?
-              </Button>
-              <Button variant="contained" onClick={onLoginClick}>
-                Login
-              </Button>
-            </Stack>
-          </CardActions>
-        </Card>
-      </Container>
-    </>
+            <Grid item xs={12}>
+              <TextField
+                fullWidth
+                id="tf-username"
+                label="Username"
+                variant="outlined"
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                fullWidth
+                id="tf-password"
+                label="Password"
+                variant="outlined"
+              />
+            </Grid>
+          </Grid>
+        </CardContent>
+        <CardActions sx={{ display: "flex", justifyContent: "flex-end" }}>
+          <Stack direction="row" justifyContent="space-between" width="100%">
+            <Button variant="text" onClick={onNewUserClick}>
+              New user?
+            </Button>
+            <Button variant="contained" onClick={onLoginClick}>
+              Login
+            </Button>
+          </Stack>
+        </CardActions>
+      </Card>
+    </Container>
   );
 }
 

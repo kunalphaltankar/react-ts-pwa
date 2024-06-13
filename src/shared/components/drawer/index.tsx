@@ -14,9 +14,10 @@ const drawerWidth = 240;
 
 type AppDrawerProps = {
   isOpen: boolean;
+  onDrawerClose: VoidFunction;
 };
 
-function AppDrawer({ isOpen }: AppDrawerProps) {
+function AppDrawer({ isOpen, onDrawerClose }: Readonly<AppDrawerProps>) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -36,7 +37,9 @@ function AppDrawer({ isOpen }: AppDrawerProps) {
         navigate("/home");
         break;
     }
+    onDrawerClose();
   };
+
   return (
     <Drawer
       sx={{
