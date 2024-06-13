@@ -1,4 +1,5 @@
 import {
+  AccountCircle,
   Add,
   CardGiftcard,
   Close,
@@ -6,11 +7,11 @@ import {
   Notifications,
   Search,
 } from "@mui/icons-material";
-import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import MenuIcon from "@mui/icons-material/Menu";
 import {
   AppBar,
   Box,
+  ButtonBase,
   Divider,
   FormControl,
   IconButton,
@@ -19,6 +20,7 @@ import {
   OutlinedInput,
   Stack,
   Toolbar,
+  Typography,
 } from "@mui/material";
 import { memo, useState } from "react";
 import RCRMLogo from "../../../assets/RCRM-Logo-Watermark.png";
@@ -89,9 +91,26 @@ const AppHeader = memo(function Header() {
                 <Notifications />
               </IconButton>
 
-              <IconButton color="inherit">
-                <AccountCircleIcon />
-              </IconButton>
+              <ButtonBase
+                sx={{ p: 1, display: "flex", gap: 1, borderRadius: 1 }}
+              >
+                <AccountCircle />
+
+                <Stack>
+                  <Typography
+                    variant="subtitle1"
+                    sx={{ fontSize: "12px", lineHeight: "16px" }}
+                  >
+                    Phyllis Yang
+                  </Typography>
+                  <Typography
+                    variant="body2"
+                    sx={{ fontSize: "12px", lineHeight: "16px" }}
+                  >
+                    Silicon Links Inc
+                  </Typography>
+                </Stack>
+              </ButtonBase>
             </Stack>
           </Stack>
         </Toolbar>
