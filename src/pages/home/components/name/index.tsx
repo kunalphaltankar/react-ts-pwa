@@ -5,7 +5,7 @@ import {
   Person,
   Twitter,
 } from "@mui/icons-material";
-import { Avatar, Stack, Typography } from "@mui/material";
+import { Avatar, IconButton, Stack, Typography } from "@mui/material";
 import { ReactElement } from "react";
 
 interface Props {
@@ -36,10 +36,22 @@ function Name({
       <Stack>
         <Stack direction="row" gap={1} alignItems="center">
           <Typography variant="h6">{name}</Typography>
-          <Facebook />
-          <Twitter />
-          <LinkedIn />
-          <GitHub />
+
+          <IconButton aria-label="Facebook profile" size="small">
+            <Facebook fontSize="inherit" />
+          </IconButton>
+
+          <IconButton aria-label="Twitter profile" size="small">
+            <Twitter fontSize="inherit" />
+          </IconButton>
+
+          <IconButton aria-label="LinkedIn profile" size="small">
+            <LinkedIn fontSize="inherit" />
+          </IconButton>
+
+          <IconButton aria-label="GitHub profile" size="small">
+            <GitHub fontSize="inherit" />
+          </IconButton>
         </Stack>
 
         <Stack direction="row" gap={2}>
