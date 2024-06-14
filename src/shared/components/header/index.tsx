@@ -1,47 +1,37 @@
-import { Close } from "@mui/icons-material";
-import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-import Brightness4Icon from "@mui/icons-material/Brightness4";
-import Brightness7Icon from "@mui/icons-material/Brightness7";
+import {
+  AccountCircle,
+  Add,
+  CardGiftcard,
+  Close,
+  Mail,
+  Notifications,
+  Search,
+} from "@mui/icons-material";
 import MenuIcon from "@mui/icons-material/Menu";
-import WifiIcon from "@mui/icons-material/Wifi";
-import WifiOffIcon from "@mui/icons-material/WifiOff";
 import {
   AppBar,
   Box,
+  ButtonBase,
+  Divider,
+  FormControl,
   IconButton,
+  InputAdornment,
+  InputLabel,
+  OutlinedInput,
   Stack,
   Toolbar,
   Typography,
-  useTheme,
 } from "@mui/material";
-import { memo, useEffect, useState } from "react";
-import { useSelector } from "react-redux";
-import { RootState } from "../../../redux/store";
-import { useColorMode } from "../../../theme/ColorModeContext";
+import { memo, useState } from "react";
+import RCRMLogo from "../../../assets/RCRM-Logo-Watermark.png";
 import AppDrawer from "../drawer";
 
 const AppHeader = memo(function Header() {
-  const globalState = useSelector((state: RootState) => state.globalState);
-  const theme = useTheme();
-  const colorMode = useColorMode();
-
-  const {
-    header: { title },
-    isOffline,
-  } = globalState;
-
   const [isOpen, setIsOpen] = useState(false);
-
-  useEffect(() => {
-    console.log(
-      "Environment Variable: ",
-      `${import.meta.env.PWA_API_ENDPOINT}--`
-    );
-  }, []);
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="sticky" component="nav">
+      <AppBar position="sticky" color="transparent">
         <Toolbar>
           <IconButton
             size="large"
@@ -53,31 +43,80 @@ const AppHeader = memo(function Header() {
           >
             {isOpen ? <Close /> : <MenuIcon />}
           </IconButton>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            {title}
-          </Typography>
-          <Stack direction="row" spacing={2} alignItems="center">
-            {isOffline ? <WifiOffIcon sx={{ opacity: 0.5 }} /> : <WifiIcon />}
 
-            <IconButton
-              sx={{ ml: 1 }}
-              onClick={colorMode.toggleColorMode}
-              color="inherit"
+          <Stack
+            direction="row"
+            justifyContent="space-between"
+            alignItems="center"
+            width="100%"
+          >
+            <FormControl variant="outlined" size="small">
+              <InputLabel htmlFor="input-with-icon-adornment">
+                Search
+              </InputLabel>
+              <OutlinedInput
+                id="input-with-icon-adornment"
+                startAdornment={
+                  <InputAdornment position="start">
+                    <Search />
+                  </InputAdornment>
+                }
+                label="Search"
+              />
+            </FormControl>
+
+            <img src={RCRMLogo} alt="Recruit CRM Logo" />
+
+            <Stack
+              direction="row"
+              spacing={2}
+              alignItems="center"
+              sx={{ display: { xs: "none", md: "flex" } }}
             >
-              {theme.palette.mode === "dark" ? (
-                <Brightness7Icon />
-              ) : (
-                <Brightness4Icon />
-              )}
-            </IconButton>
+              <IconButton color="inherit">
+                <Add />
+              </IconButton>
 
-            <IconButton color="inherit">
-              <AccountCircleIcon />
-            </IconButton>
+              <Divider flexItem orientation="vertical" />
+
+              <IconButton color="inherit">
+                <CardGiftcard />
+              </IconButton>
+
+              <IconButton color="inherit">
+                <Mail />
+              </IconButton>
+
+              <IconButton color="inherit">
+                <Notifications />
+              </IconButton>
+
+              <ButtonBase
+                sx={{ p: 1, display: "flex", gap: 1, borderRadius: 1 }}
+              >
+                <AccountCircle />
+
+                <Stack>
+                  <Typography
+                    variant="subtitle1"
+                    sx={{ fontSize: "12px", lineHeight: "16px" }}
+                  >
+                    Phyllis Yang
+                  </Typography>
+                  <Typography
+                    variant="body2"
+                    sx={{ fontSize: "12px", lineHeight: "16px" }}
+                  >
+                    Silicon Links Inc
+                  </Typography>
+                </Stack>
+              </ButtonBase>
+            </Stack>
           </Stack>
         </Toolbar>
       </AppBar>
-      <AppDrawer isOpen={isOpen} />
+
+      <AppDrawer isOpen={isOpen} onDrawerClose={() => setIsOpen(false)} />
     </Box>
   );
 });
