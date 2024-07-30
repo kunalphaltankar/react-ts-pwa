@@ -8,6 +8,11 @@ const config: CapacitorConfig = {
     url: "http://172.20.10.15:3000",
     cleartext: true,
   },
+  plugins: {
+    CapacitorHttp: {
+      enabled: true,
+    },
+  },
 };
 
 export default config;
