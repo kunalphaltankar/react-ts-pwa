@@ -53,7 +53,7 @@ function AppDrawer({ isOpen, onDrawerClose }: Readonly<AppDrawerProps>) {
         "& .MuiDrawer-paper": {
           width: drawerWidth,
           boxSizing: "border-box",
-          marginTop: { xs: 16, sm: 8 },
+          marginTop: "env(safe-area-inset-top)",
           zIndex: 10,
         },
       }}
