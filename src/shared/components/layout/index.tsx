@@ -59,7 +59,7 @@ function Layout({ children }: Readonly<LayoutProps>) {
     <>
       <Grid container flexDirection="column" spacing={2}>
         {isLoggedIn && (
-          <Grid item sx={{ marginBlockStart: { xs: "4rem", sm: 0 } }}>
+          <Grid item>
             <AppHeader />
           </Grid>
         )}
