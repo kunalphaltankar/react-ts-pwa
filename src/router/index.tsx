@@ -4,6 +4,7 @@ import EditCandidateDetails from "../pages/edit-candidate-details";
 import Home from "../pages/home";
 import Login from "../pages/login";
 import ManageUser from "../pages/manage-user";
+import Payslips from "../pages/payslips";
 
 function AppRouter() {
   return (
@@ -14,6 +15,7 @@ function AppRouter() {
       <Route path="/dashboard" element={<Dashboard />} />
       <Route path="/manage-user" element={<ManageUser />} />
       <Route path="/edit-candidate" element={<EditCandidateDetails />} />
+      <Route path="/payslips" element={<Payslips />} />
     </Routes>
   );
 }

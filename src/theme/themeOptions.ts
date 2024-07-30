@@ -9,10 +9,10 @@ import { ThemeOptions } from "@mui/material/styles";
 export const themeOptions: ThemeOptions = {
   palette: {
     primary: {
-      main: "#1070CA",
+      main: "#007aff",
     },
     secondary: {
-      main: "#ba68c8",
+      main: "#FFE27C",
     },
   },
 };

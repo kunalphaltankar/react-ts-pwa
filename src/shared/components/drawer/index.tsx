@@ -29,6 +29,9 @@ function AppDrawer({ isOpen, onDrawerClose }: Readonly<AppDrawerProps>) {
       case "Manage User":
         navigate("/manage-user");
         break;
+      case "Payslips":
+        navigate("/payslips");
+        break;
       case "Logout":
         dispatch(updateLoggedStatus({ isLoggedIn: false }));
         navigate("/");
@@ -40,6 +43,8 @@ function AppDrawer({ isOpen, onDrawerClose }: Readonly<AppDrawerProps>) {
     onDrawerClose();
   };
 
+  const routes = ["Home", "Dashboard", "Manage User", "Payslips", "Logout"];
+
   return (
     <Drawer
       sx={{
@@ -48,7 +53,7 @@ function AppDrawer({ isOpen, onDrawerClose }: Readonly<AppDrawerProps>) {
         "& .MuiDrawer-paper": {
           width: drawerWidth,
           boxSizing: "border-box",
-          marginTop: 8,
+          marginTop: 16,
           zIndex: 10,
         },
       }}
@@ -57,11 +62,11 @@ function AppDrawer({ isOpen, onDrawerClose }: Readonly<AppDrawerProps>) {
       open={isOpen}
     >
       <List>
-        {["Home", "Dashboard", "Logout", "Manage User"].map((text, index) => (
+        {routes.map((text, index) => (
           <ListItem key={text} disablePadding>
             <ListItemButton onClick={() => onMenuClick(text)}>
               <ListItemIcon>
-                {index % 2 === 0 ? <Home /> : <Logout />}
+                {index !== routes.length ? <Home /> : <Logout />}
               </ListItemIcon>
               <ListItemText primary={text} />
             </ListItemButton>

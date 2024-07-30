@@ -23,7 +23,6 @@ import {
   Typography,
 } from "@mui/material";
 import { memo, useState } from "react";
-import RCRMLogo from "../../../assets/RCRM-Logo-Watermark.png";
 import AppDrawer from "../drawer";
 
 const AppHeader = memo(function Header() {
@@ -31,7 +30,7 @@ const AppHeader = memo(function Header() {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="sticky" color="transparent">
+      <AppBar position="relative" color="transparent">
         <Toolbar>
           <IconButton
             size="large"
@@ -65,7 +64,7 @@ const AppHeader = memo(function Header() {
               />
             </FormControl>
 
-            <img src={RCRMLogo} alt="Recruit CRM Logo" />
+            <Typography variant="h6">Deel</Typography>
 
             <Stack
               direction="row"
