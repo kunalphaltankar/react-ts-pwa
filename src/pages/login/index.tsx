@@ -30,7 +30,7 @@ function Login() {
 
   const onLoginClick = () => {
     dispatch(updateLoggedStatus({ isLoggedIn: true }));
-    navigate("/home");
+    navigate("/payslips");
   };
 
   const onNewUserClick = async () => {
