@@ -3,6 +3,7 @@ import { ReactElement } from "react";
 import { useParams } from "react-router-dom";
 import DataRow from "../../shared/components/data-row";
 import { payslips } from "../payslips/samplePayslips";
+import { downloadPDF } from "./downloadPdf";
 
 function Payslip(): ReactElement {
   const params = useParams();
@@ -32,7 +33,13 @@ function Payslip(): ReactElement {
       </Grid>
 
       <Grid item xs={12}>
-        <Button onClick={() => console.log("Download clicked!")}>
+        <Button
+          onClick={() =>
+            downloadPDF(
+              "https://file-examples.com/storage/fe3f15b9da66a36baa1b51a/2017/10/file-sample_150kB.pdf"
+            )
+          }
+        >
           Download Payslip
         </Button>
       </Grid>
