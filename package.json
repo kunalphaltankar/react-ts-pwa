@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "start": "vite --mode dev --host=0.0.0.0 --port=3000",
-    "ios": "npx cap run ios -l --target 93CAA49C-FCCE-4869-8EEA-48A4F4ECD128",
+    "ios": "npx cap run ios -l",
     "android": "npx cap run android -l",
     "sync": "npx cap sync",
     "start-dev": "vite --mode dev",

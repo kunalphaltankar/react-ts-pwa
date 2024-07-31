@@ -1,27 +1,58 @@
-# React + TypeScript + Vite
+# React + TypeScript + Vite + MUI + Capacitor
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This template provides a minimal setup to get React working in Vite with HMR, some ESLint rules and React testing library support with Jest.
 
-Currently, two official plugins are available:
+## Developing
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Built With
+1. React 18
+2. MUI 5
+3. Capacitor 6
 
-## Expanding the ESLint configuration
+### Prerequisites
+To setup a development environment you need following
+1. Node 18+
+2. Xcode
+3. Android studio
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+Follow [capacitor installation](https://capacitorjs.com/docs/getting-started/environment-setup) docs for more information.
 
-- Configure the top-level `parserOptions` property like this:
+### Setting up Development Environment
 
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
+Here's a brief intro about what a developer must do in order to start developing the project further:
+
+```shell
+git clone https://github.com/kunalphaltankar/react-ts-pwa.git
+
+cd react-ts-pwa/
+
+npm install
+
+npm start
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+#### Run on iOS
+```shell
+npm run ios
+```
+
+#### Run on Android
+```shell
+npm run android
+```
+
+### Building
+```shell
+npm run build-dev
+```
+
+### Tests
+```shell
+npm test
+```
+
+### Environments
+1. Dev Environment: `npm run start-dev` && `npm run build-dev`
+2. Test Environment: `npm run start-test` && `npm run build-test`
+3. Prod Environment: `npm run start-prod` && `npm run build-prod`
+
