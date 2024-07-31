@@ -66,7 +66,7 @@ function AppDrawer({ isOpen, onDrawerClose }: Readonly<AppDrawerProps>) {
           <ListItem key={text} disablePadding>
             <ListItemButton onClick={() => onMenuClick(text)}>
               <ListItemIcon>
-                {index !== routes.length ? <Home /> : <Logout />}
+                {index !== routes.length - 1 ? <Home /> : <Logout />}
               </ListItemIcon>
               <ListItemText primary={text} />
             </ListItemButton>
