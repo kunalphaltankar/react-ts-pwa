@@ -2,53 +2,41 @@ import { Download } from "@mui/icons-material";
 import { LoadingButton } from "@mui/lab";
 import { Grid, LinearProgress, Typography } from "@mui/material";
 import { ReactElement, useState } from "react";
+import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
+import { setNotification } from "../../redux/reducers/notification.reducer";
 import DataRow from "../../shared/components/data-row";
 import { payslips } from "../payslips/samplePayslips";
 import { downloadPDF } from "./downloadPdf";
 
-/* function CircularProgressWithLabel(
-  props: CircularProgressProps & { value: number }
-) {
-  return (
-    <Box sx={{ position: "relative", display: "inline-flex" }}>
-      <CircularProgress variant="determinate" {...props} />
-      <Box
-        sx={{
-          top: 0,
-          left: 0,
-          bottom: 0,
-          right: 0,
-          position: "absolute",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-        }}
-      >
-        <Typography
-          variant="caption"
-          component="div"
-          color="text.secondary"
-        >{`${Math.round(props.value)}%`}</Typography>
-      </Box>
-    </Box>
-  );
-}
- */
 function Payslip(): ReactElement {
+  const params = useParams();
+  const dispatch = useDispatch();
+
+  // local states
   const [downloadProgress, setDownloadProgress] = useState(0);
   const [loading, setLoading] = useState(false);
-  const params = useParams();
   const payslip = payslips.find(({ id }) => id === params.payslipId);
 
   const handleDownload = async () => {
-    setLoading(true);
-    await downloadPDF(
-      "https://file-examples.com/storage/fe27f03f2b66aa57894a910/2017/10/file-example_PDF_1MB.pdf",
-      setDownloadProgress
-    );
-    setDownloadProgress(0);
-    setLoading(false);
+    try {
+      setLoading(true);
+      await downloadPDF(
+        "https://file-examples.com/storage/fe27f03f2b66aa57894a910/2017/10/file-example_PDF_1MB.pdf",
+        setDownloadProgress
+      );
+    } catch (error) {
+      dispatch(
+        setNotification({
+          message: "Error in downloading the file!",
+          show: true,
+          type: "error",
+        })
+      );
+    } finally {
+      setDownloadProgress(0);
+      setLoading(false);
+    }
   };
 
   return (
